@@ -2,6 +2,7 @@ package com.ditto.taskmanagement.controller;
 
 import com.ditto.taskmanagement.model.Task;
 import com.ditto.taskmanagement.service.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody Task task) {
+    public ResponseEntity<Task> createTask(@Valid @RequestBody Task task) {
         Task createdTask = taskService.createTask(task);
         return ResponseEntity.ok(createdTask);
     }
